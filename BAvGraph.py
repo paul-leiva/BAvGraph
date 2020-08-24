@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
-import matplotlib
+import matplotlib.pyplot as plt
 import sys
 
 while True:
@@ -28,6 +28,8 @@ while True:
 
     prevYear = 0
     data = []
+    yrs = []
+    avgs = []
     for row in rows:
         Year = row.find('th', attrs={"data-stat":"year_ID"}).get_text()
         if Year == prevYear:
@@ -39,3 +41,8 @@ while True:
         BA = row.find('td', attrs={"data-stat":"batting_avg"}).get_text()
         HR = row.find('td', attrs={"data-stat": "HR"}).get_text()
         data.append([Year, Team, League, BA, HR])
+        yrs.append(Year)
+        avgs.append(BA)
+    plt.plot(yrs, [.150, .300, .250], 'ro')
+    plt.axis(0, .100, .200, .300, .400, .500)
+    plt.show()
