@@ -12,8 +12,10 @@ table = soup.find("table", id='batting_standard')
 
 rows = table.find_all('tr', attrs = {'class':'full'})
 for row in rows:
-    for cell in row.find_all('td'):
-        print(cell.get_text())
+    cell = row.find('td', attrs={"data-stat":"batting_avg"})
+    print(cell.get_text())
+    #for cell in row.find_all('td'):
+        #print(cell.get_text())
 
 
 tabledata = []
