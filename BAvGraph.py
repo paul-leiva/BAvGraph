@@ -2,8 +2,20 @@ from bs4 import BeautifulSoup
 import requests
 import matplotlib
 
-print('Kenny Lofton')
-response = requests.get('https://www.baseball-reference.com/players/l/loftoke01.shtml')
+url = 'https://www.baseball-reference.com/players/'
+
+name = input('Enter Player Name (Ex: Babe Ruth): ')
+name = name.lower()
+name = name.split()
+first_name = name[0]
+last_name = name[1]
+
+print(last_name[:6] + first_name[:2])
+
+url += last_name[0:1] + '/' + last_name[:6] + first_name[:2] + '01.shtml'
+print(url)
+
+response = requests.get(url)
 
 soup = BeautifulSoup(response.text, 'html.parser')
 
@@ -23,8 +35,6 @@ for row in rows:
     BA = row.find('td', attrs={"data-stat":"batting_avg"}).get_text()
     HR = row.find('td', attrs={"data-stat": "HR"}).get_text()
     data.append([Year, Team, League, BA, HR])
-    print(Year + '|' + Team + '|' + League + '|' + HR + '|' + BA)
-    #for cell in row.find_all('td'): FROM EVERY ROW
-        #print(cell.get_text())      PRINT EVERY CELL
+    print(Year + '|' + Team + '|' + League + '|' + BA + '|' + HR)
 
 print(data)
