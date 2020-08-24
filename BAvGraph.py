@@ -1,40 +1,41 @@
 from bs4 import BeautifulSoup
 import requests
 import matplotlib
+import sys
 
-url = 'https://www.baseball-reference.com/players/'
+while True:
+    url = 'https://www.baseball-reference.com/players/'
 
-name = input('Enter Player Name (Ex: Babe Ruth): ')
-name = name.lower()
-name = name.split()
-first_name = name[0]
-last_name = name[1]
+    player_name = input('\nEnter Player Name (Ex: Babe Ruth): ')
+    if (player_name == 'quit'):
+        sys.exit()
+    player_name = player_name.lower()
+    player_name = player_name.split()
+    first_name = player_name[0]
+    last_name = player_name[1]
 
-print(last_name[:6] + first_name[:2])
+    url += last_name[0:1] + '/' + last_name[:5] + first_name[:2] + '01.shtml'
 
-url += last_name[0:1] + '/' + last_name[:6] + first_name[:2] + '01.shtml'
-print(url)
+    response = requests.get(url)
 
-response = requests.get(url)
+    soup = BeautifulSoup(response.text, 'html.parser')
 
-soup = BeautifulSoup(response.text, 'html.parser')
+    realName = soup.find("h1", attrs = {'itemprop':'name'}).get_text()
+    print(realName)
 
-table = soup.find("table", id='batting_standard')
-rows = table.find_all('tr', attrs = {'class':'full'})
+    table = soup.find("table", id='batting_standard')
+    rows = table.find_all('tr', attrs = {'class':'full'})
 
-prevYear = 0
-data = []
-for row in rows:
-    Year = row.find('th', attrs={"data-stat":"year_ID"}).get_text()
-    if Year == prevYear:
-        pass
-    else:
-        prevYear = Year
-    Team = row.find('td', attrs={"data-stat":"team_ID"}).get_text()
-    League = row.find('td', attrs={"data-stat":"lg_ID"}).get_text()
-    BA = row.find('td', attrs={"data-stat":"batting_avg"}).get_text()
-    HR = row.find('td', attrs={"data-stat": "HR"}).get_text()
-    data.append([Year, Team, League, BA, HR])
-    print(Year + '|' + Team + '|' + League + '|' + BA + '|' + HR)
-
-print(data)
+    prevYear = 0
+    data = []
+    for row in rows:
+        Year = row.find('th', attrs={"data-stat":"year_ID"}).get_text()
+        if Year == prevYear:
+            pass
+        else:
+            prevYear = Year
+        Team = row.find('td', attrs={"data-stat":"team_ID"}).get_text()
+        League = row.find('td', attrs={"data-stat":"lg_ID"}).get_text()
+        BA = row.find('td', attrs={"data-stat":"batting_avg"}).get_text()
+        HR = row.find('td', attrs={"data-stat": "HR"}).get_text()
+        data.append([Year, Team, League, BA, HR])
