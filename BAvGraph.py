@@ -6,7 +6,6 @@ import sys
 
 while True:
     try:
-        url = 'https://www.baseball-reference.com/players/'
 
         player_name = input('\nEnter Player Name (Ex: Babe Ruth): ')
         if (player_name == 'quit'):
@@ -16,6 +15,7 @@ while True:
         first_name = player_name[0]
         last_name = player_name[1]
 
+        url = 'https://www.baseball-reference.com/players/'
         url += last_name[0:1] + '/' + last_name[:5] + first_name[:2] + '01.shtml'
 
         response = requests.get(url)
