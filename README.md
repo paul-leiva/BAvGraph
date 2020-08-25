@@ -13,6 +13,7 @@ You will also need the `sys` library, but this comes standard with Python.
 2. Using the `requests` and `BeautifulSoup` libraries, the player is found on baseball-reference.com. Baseball Reference uses a standard URL convention to identify players by name. If the player is not found or the player's page is erroneous when fetching is attempted, the process is exited and the user will be prompted to enter a different player name.
 3. For the player's *Standard Batting* table, the player's batting average in every Major League season/year is fetched. If you look on the player's actual webpage, you will see there may be multiple entries for 1 season for players who were traded or were released and re-signed in a single season. However, this program deals with that and only collects the cumulative/total average for every season even if the player was with multiple teams. Pre-season, minor league, all-star game, and postseason batting is NOT included in this fetching.
 4. The averages for each season are then plotted on a scatter plot for the player.
+5. To search for another player, click the "Close Window" button (the red 'X' in the upper left of the window on Mac device) and then you should be prompted to search for another player after that.
 
 ## How to Input a Player Name:
 ![UserInput](/UserInput.png?raw=true)
