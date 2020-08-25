@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 import matplotlib.pyplot as plt
+import matplotlib.ticker as mtick
 import sys
 
 while True:
@@ -45,12 +46,14 @@ while True:
             yrs.append(Year)
             avgs.append(float(BA))
         graph, axis = plt.subplots()
-        plt.ylim(.000, .500)
+        plt.ylim(0, .500)
         plt.xlabel("Season")
         plt.ylabel("Batting Average")
         plt.title(realName)
         axis.grid(True)
         axis.scatter(yrs, avgs, color='r', edgecolors='black')
+        plt.gca().yaxis.set_major_formatter(mtick.FormatStrFormatter('%.3f'))
+        plt.show(block=False)
         plt.show()
     except:
         print('ERROR: Player data could not be fetched. Try a different player.')
