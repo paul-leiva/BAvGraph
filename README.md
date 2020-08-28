@@ -25,7 +25,7 @@ When inputting a player name, this program only works with the players "on-field
 ## Know Issues and Bugs:
 1. Players known by intials may or may not be found due to the way their URL is formatted by Baseball-Reference (Ex: JB Shuck, J.D. Martinez, etc.). Most of these players who go by initials seem to be able to be found in normal fashion. However, some are not.
 2. Players with the same name as other players (Ex: the Billy Hamilton's) cannot be discerned by this program.
-3. Father & son players also cannot be distinguished from each other (Ex: Ken Griffey Sr./Jr.).
+3. Patronymically-named players cannot be distinguished from each other (Ex: Ken Griffey Sr./Jr.).
 4. For players who played in the league for a while (15+ seasons), their graphs may show up bunched up with the years overlapping. You will have to expand the scatter plot's window to counteract this. It should display find after doing that.
 5. Pitchers' batting data is not displayed in the same fashion as position players. So you will not be able to find pitchers' hitting data. Use this only for **position players.**
 6. Some players with differently formatted web pages than the usual exist at random and will not display. However, this is a very small fraction of all players.
