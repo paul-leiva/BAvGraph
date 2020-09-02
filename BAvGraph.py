@@ -52,6 +52,7 @@ while True:
         plt.title(realName)
         axis.grid(True)
         axis.scatter(yrs, avgs, color='r', edgecolors='black')
+        axis.plot(yrs, avgs, color='gray')  # add a line to connect the dots
         plt.gca().yaxis.set_major_formatter(mtick.FormatStrFormatter('%.3f'))
         plt.show(block=False)
         plt.show()
