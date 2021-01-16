@@ -16,7 +16,8 @@ You will also need the `sys` library, but this comes standard with Python.
 5. To search for another player, click the "Close Window" button (the red 'X' in the upper left of the window on Mac device) and then you should be prompted to search for another player after that.
 
 ## How to Input a Player Name:
-![UserInput](/UserInput.png?raw=true)
+![](/UserInput.gif?raw=true)
+
 When inputting a player name, this program only works with the players "on-field" name. Full names, nicknames, previous names for players who have changed their names, etc. will not work. Some examples of player names include `Babe Ruth`, `Lou Gehrig`, `David Ortiz`, `Giancarlo Stanton`, and `Mike Trout`. For players with special characters in their name (ñ, ü, accented vowels, etc.), **DO NOT** type those special characters. The URLs are not written with special characters, so your player data will not be fetched. Instead, just type the normal letter. (Ex: To search for Carlos Peña, you would type `Carlos Pena` and it will find him.)
 
 ## What Your Ouput will look like:
